@@ -1,5 +1,5 @@
-# Splat + Mesh Viewer
-Splat + Mesh Viewer will allow you to upload a splat and a gltf file and visualize them in the browser.
+# PLY to Mesh Generator
+You'll be able to convert a point cloud (.ply file) to a mesh (.gltf).
 
 
 # Project Setup
