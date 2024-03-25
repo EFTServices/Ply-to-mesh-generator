@@ -1,7 +1,7 @@
 import open3d as o3d
 import numpy as np
 
-pcd = o3d.io.read_point_cloud("point_cloud.ply")
+pcd = o3d.io.read_point_cloud("pcd.ply")
 pcd.estimate_normals()
 
 # to obtain a consistent normal orientation
@@ -13,7 +13,7 @@ pcd.normals = o3d.utility.Vector3dVector( - np.asarray(pcd.normals))
 mesh, _ = o3d.geometry.TriangleMesh.create_from_point_cloud_poisson(pcd, depth=4)
 
 # Save mesh to file
-o3d.io.write_triangle_mesh("pcd.gltf", mesh)
+o3d.io.write_triangle_mesh("mesh.gltf", mesh)
 
 
 mesh.paint_uniform_color(np.array([0.7, 0.7, 0.7]))
