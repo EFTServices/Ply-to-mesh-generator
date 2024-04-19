@@ -10,7 +10,11 @@ pcd.orient_normals_towards_camera_location(pcd.get_center())
 # or you might want to flip the normals to make them point outward, not mandatory
 pcd.normals = o3d.utility.Vector3dVector( - np.asarray(pcd.normals))
 
+
 mesh, _ = o3d.geometry.TriangleMesh.create_from_point_cloud_poisson(pcd, depth=4)
+
+mesh.remove_degenerate_triangles()
+mesh.compute_triangle_normals()
 
 # Save mesh to file
 o3d.io.write_triangle_mesh("mesh.gltf", mesh)
@@ -18,7 +22,7 @@ o3d.io.write_triangle_mesh("mesh.gltf", mesh)
 
 mesh.paint_uniform_color(np.array([0.7, 0.7, 0.7]))
 
-# o3d.visualization.draw_geometries([mesh],
+# o3d.visualization.draw_geometries([pcd],
 #                                   zoom=0.664,
 #                                   front=[-0.4761, -0.4698, -0.7434],
 #                                   lookat=[1.8900, 3.2596, 0.9284],
